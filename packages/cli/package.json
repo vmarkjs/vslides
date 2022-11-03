@@ -1,0 +1,9 @@
+{
+  "name": "@vslides/cli",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "vslides": "bin/vslides.js"
+  }
+}
