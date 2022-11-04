@@ -1,6 +1,6 @@
-import { Plugin } from 'vite'
+import type { Plugin } from 'vite'
 
-export default function vitepPlugin(): Plugin {
+export default function vitePlugin(): Plugin {
   return {
     name: 'vslides',
     transform() {
