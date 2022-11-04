@@ -1,1 +1,2 @@
-console.log('hello, world')
+#!/usr/bin/env node
+import('../dist/cli.mjs')

@@ -3,14 +3,13 @@
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
-  "source": "src/index.ts",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist && parcel build"
+    "build": "rimraf dist && unbuild"
   },
   "dependencies": {
     "vue": "^3.2.41"

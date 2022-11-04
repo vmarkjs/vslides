@@ -3,7 +3,19 @@
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
+  "main": "dist/cli.mjs",
+  "types": "dist/cli.d.ts",
+  "files": [
+    "bin/",
+    "dist/"
+  ],
   "bin": {
     "vslides": "bin/vslides.js"
+  },
+  "scripts": {
+    "build": "rimraf dist && unbuild"
+  },
+  "dependencies": {
+    "@vslides/vite-plugin": "workspace:^0.0.1"
   }
 }

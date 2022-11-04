@@ -1,5 +1,4 @@
-import { defineComponent } from 'vue'
-
+import { defineComponent, h } from 'vue'
 export default defineComponent(() => {
-  return () => 'hello'
+  return h('div', ['hello'])
 })

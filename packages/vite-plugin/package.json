@@ -3,17 +3,18 @@
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
-  "source": "src/index.ts",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist && parcel build"
+    "build": "rimraf dist && unbuild"
   },
   "dependencies": {
-    "@vslides/presenter": "workspace:^0.0.1",
-    "vite": "^3.2.2"
+    "@vslides/presenter": "workspace:^0.0.1"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0"
   }
 }
