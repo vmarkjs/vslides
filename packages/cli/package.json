@@ -10,12 +10,21 @@
     "dist/"
   ],
   "bin": {
-    "vslides": "bin/vslides.js"
+    "vslides": "bin/vslides.mjs"
   },
   "scripts": {
     "build": "rimraf dist && unbuild"
   },
   "dependencies": {
     "@vslides/vite-plugin": "workspace:^0.0.1"
+  },
+  "unbuild": {
+    "entries": [
+      "src/cli"
+    ],
+    "declaration": true,
+    "externals": [
+      "vite"
+    ]
   }
 }

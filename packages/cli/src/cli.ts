@@ -1,7 +1,7 @@
-import { createServer } from 'vite'
-
-export function serve() {
-  createServer({
-    root: '.',
-  })
+async function serve() {
+  console.log('hello')
 }
+
+serve().finally(() => {
+  // exit
+})
