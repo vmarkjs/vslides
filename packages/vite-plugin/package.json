@@ -11,10 +11,8 @@
   "scripts": {
     "build": "rimraf dist && unbuild"
   },
-  "dependencies": {
-    "@vslides/presenter": "workspace:^0.0.1"
-  },
   "peerDependencies": {
+    "@vslides/core": "workspace:^0.0.1",
     "vite": "^3.0.0"
   }
 }

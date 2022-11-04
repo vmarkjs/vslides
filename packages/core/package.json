@@ -1,5 +1,5 @@
 {
-  "name": "@vslides/presenter",
+  "name": "@vslides/core",
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rimraf dist && unbuild"
   },
-  "dependencies": {
-    "vue": "^3.2.41"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   }
 }
