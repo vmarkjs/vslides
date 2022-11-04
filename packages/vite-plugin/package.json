@@ -10,7 +10,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "parcel build"
+    "build": "rimraf dist && parcel build"
   },
   "dependencies": {
     "@vslides/presenter": "workspace:^0.0.1",

@@ -10,7 +10,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "parcel build"
+    "build": "rimraf dist && parcel build"
   },
   "dependencies": {
     "vue": "^3.2.41"
