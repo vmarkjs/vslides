@@ -1,7 +1,29 @@
 {
   "name": "vslides-monorepo",
   "private": true,
+  "type": "module",
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
+  },
+  "scripts": {
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,vue,json}\"",
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx,.vue .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx,vue}": [
+      "eslint --fix --max-warnings=0"
+    ]
   }
 }
