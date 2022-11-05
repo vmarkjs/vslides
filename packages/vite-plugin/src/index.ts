@@ -6,8 +6,8 @@ export default function vitePlugin(): Plugin {
     transform() {
       // TODO
     },
-    configureServer() {
-      // TODO
+    configureServer(server) {
+      console.log(server)
     },
   }
 }

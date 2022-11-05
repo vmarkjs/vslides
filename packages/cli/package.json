@@ -24,7 +24,8 @@
     ],
     "declaration": true,
     "externals": [
-      "vite"
+      "vite",
+      "@vslides/vite-plugin"
     ]
   }
 }
