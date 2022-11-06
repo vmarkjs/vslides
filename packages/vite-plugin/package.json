@@ -14,5 +14,12 @@
   "peerDependencies": {
     "@vslides/core": "workspace:^0.0.1",
     "vite": "^3.0.0"
+  },
+  "dependencies": {
+    "@vmark/core": "^1.0.0",
+    "hash-sum": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/hash-sum": "^1.0.0"
   }
 }

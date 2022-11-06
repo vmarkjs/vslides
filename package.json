@@ -12,8 +12,10 @@
     "build": "pnpm -r --filter='./packages/*' run build"
   },
   "devDependencies": {
+    "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
+    "@vslides/core": "workspace:^0.0.1",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
