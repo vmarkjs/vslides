@@ -1,4 +1,4 @@
-LICENSE.md
-CHANGELOG.md
+*.md
+!README.md
 dist/
 pnpm-lock.yaml
