@@ -35,11 +35,11 @@ export default function vitePlugin(option: VSlidesPluginOption): Plugin {
       )
 
       // handle hmr
-      code += `\nconst _default = { setup() { return () => h(Presenter, () => nodes) } };`
+      code += `\nconst _default = { setup() { return () => h(Presenter, { pages: nodes }) } };`
       code += `\n_default.__hmrId = '${hash(id)}';`
       code += `\n_default.__file = '${id}';`
       code += `\n__VUE_HMR_RUNTIME__.createRecord(_default.__hmrId, _default);`
-      code += `\nimport.meta.hot.accept(({ default: _default }) => { __VUE_HMR_RUNTIME__.rerender(_default.__hmrId, _default.render) });`
+      code += `\nimport.meta.hot.accept(({ default: _default }) => { __VUE_HMR_RUNTIME__.reload(_default.__hmrId, _default) });`
       code += `\nexport default _default;\n\n`
       return code
     },

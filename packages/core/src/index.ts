@@ -1,6 +1,8 @@
-import { defineComponent, h } from 'vue'
+import { VNode, defineComponent, h } from 'vue'
+
 export default defineComponent({
-  setup(_, { slots }) {
+  props: { pages: Array<VNode> },
+  setup(props) {
     return () =>
       h(
         'div',
@@ -10,7 +12,7 @@ export default defineComponent({
             'grid-template-columns': 'repeat(3, minmax(0, 1fr))',
           },
         },
-        slots.default ? slots.default() : [],
+        props.pages,
       )
   },
 })
