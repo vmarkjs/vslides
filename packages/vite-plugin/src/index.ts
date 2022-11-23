@@ -25,7 +25,7 @@ export default function vitePlugin(option: VSlidesPluginOption): Plugin {
         return
       }
       let code = `\n\nimport { h, reactive } from "vue";`
-      code += `\nimport Presenter from "@vslides/core";`
+      code += `\nimport Presenter from "@vslides/core/dist/Presenter.vue";`
       code += `\nexport const nodes = reactive([]);`
       await Promise.all(
         src.split('---').map(async (s) => {
