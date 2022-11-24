@@ -3,11 +3,14 @@
   "version": "0.0.1",
   "type": "module",
   "license": "MIT",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "components/"
   ],
   "scripts": {
-    "build": "rimraf dist && unbuild"
+    "build": "rimraf dist components && unbuild"
   },
   "peerDependencies": {
     "vue": "^3.0.0"

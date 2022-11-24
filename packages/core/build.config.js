@@ -1,3 +1,11 @@
 export default {
-  entries: [{ input: 'src/', outDir: 'dist/' }],
+  entries: [
+    './src/index',
+    {
+      builder: 'mkdist',
+      input: 'src/components/',
+      outDir: 'components/',
+    },
+  ],
+  declaration: true,
 }
