@@ -1,10 +1,52 @@
 <script lang="ts">
-import { VNode, defineComponent, h } from 'vue'
+import { VNode, defineComponent, h, provide, onUnmounted } from 'vue'
+import {
+  createRouter,
+  createWebHashHistory,
+  RouterView,
+  RouterLink,
+} from 'vue-router'
 
 export default defineComponent({
   props: { pages: Array<VNode> },
   setup(props) {
-    return () => h('div', { class: 'container' }, props.pages)
+    const fakeApp = {
+      provide,
+      component: () => {},
+      unmount: () => {},
+      config: {
+        globalProperties: {},
+      },
+    }
+    const routes = [
+      {
+        path: '/',
+        component: defineComponent({
+          render() {
+            return h('div', [
+              'hello',
+              h(RouterLink, { to: '/about' }, () => 'link'),
+            ])
+          },
+        }),
+      },
+      {
+        path: '/about',
+        component: defineComponent({
+          render() {
+            return h('div', ['world'])
+          },
+        }),
+      },
+    ]
+    const router = createRouter({
+      history: createWebHashHistory(),
+      routes,
+    })
+    router.install(fakeApp as never)
+    onUnmounted(fakeApp.unmount)
+    return () =>
+      h('div', [h(RouterView), h('div', { class: 'container' }, props.pages)])
   },
 })
 </script>

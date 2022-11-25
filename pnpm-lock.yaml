@@ -20,10 +20,12 @@ importers:
       typescript: ^4.8.4
       unbuild: ^0.9.4
       vue: ^3.2.45
+      vue-router: ^4.1.6
     dependencies:
       '@vslides/cli': link:packages/cli
       '@vslides/core': link:packages/core
       vue: 3.2.45
+      vue-router: 4.1.6_vue@3.2.45
     devDependencies:
       '@types/node': 18.11.9
       '@typescript-eslint/eslint-plugin': 5.42.0_6xw5wg2354iw4zujk2f3vyfrzu
@@ -1542,6 +1544,10 @@ packages:
     dependencies:
       '@vue/compiler-dom': 3.2.45
       '@vue/shared': 3.2.45
+    dev: false
+
+  /@vue/devtools-api/6.4.5:
+    resolution: {integrity: sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ==}
     dev: false
 
   /@vue/reactivity-transform/3.2.45:
@@ -4609,6 +4615,15 @@ packages:
       rollup: 2.79.1
     optionalDependencies:
       fsevents: 2.3.2
+
+  /vue-router/4.1.6_vue@3.2.45:
+    resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.4.5
+      vue: 3.2.45
+    dev: false
 
   /vue/3.2.45:
     resolution: {integrity: sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA==}
