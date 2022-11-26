@@ -7,12 +7,15 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
-    "components/"
+    "components/",
+    "style/"
   ],
   "scripts": {
-    "build": "rimraf dist components && unbuild"
+    "build": "rimraf dist components style && unbuild"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0",
+    "@vueuse/core": "^4.0.0"
   }
 }
