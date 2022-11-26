@@ -61,7 +61,18 @@ export default defineComponent({
     }
     router.install(fakeApp as never)
     onUnmounted(fakeApp.unmount)
-    return () => h('div', [h(RouterView)])
+    return () => h('div', { class: 'vslides-page-view' }, [h(RouterView)])
   },
 })
 </script>
+
+<style>
+.vslides-page-view {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  background-color: black;
+}
+</style>

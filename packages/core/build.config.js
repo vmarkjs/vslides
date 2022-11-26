@@ -6,6 +6,11 @@ export default {
       input: 'src/components/',
       outDir: 'components/',
     },
+    {
+      builder: 'mkdist',
+      input: 'src/style/',
+      outDir: 'style/',
+    },
   ],
   declaration: true,
 }
