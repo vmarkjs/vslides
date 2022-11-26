@@ -24,9 +24,9 @@ export default defineComponent({
             }
 
             if (pageNo >= pages.length) {
-              router.replace(`/${pages.length}`).finally(() => {})
+              router.replace(`/${pages.length}`)
             } else {
-              router.replace('/1').finally(() => {})
+              router.replace('/1')
             }
           },
         }),
