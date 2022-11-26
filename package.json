@@ -14,6 +14,7 @@
   "dependencies": {
     "@vslides/cli": "workspace:^0.0.1",
     "@vslides/core": "workspace:^0.0.1",
+    "@vueuse/core": "^9.6.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

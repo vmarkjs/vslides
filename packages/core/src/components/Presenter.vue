@@ -1,15 +1,56 @@
 <script lang="ts">
 import { VNode, defineComponent, h, provide, onUnmounted } from 'vue'
-import {
-  createRouter,
-  createWebHashHistory,
-  RouterView,
-  RouterLink,
-} from 'vue-router'
+import { createRouter, createWebHashHistory, RouterView } from 'vue-router'
+import { onKeyStroke } from '@vueuse/core'
+
+import Page from './Page.vue'
 
 export default defineComponent({
   props: { pages: Array<VNode> },
   setup(props) {
+    const routes = [
+      {
+        path: '/:page',
+        component: defineComponent({
+          render() {
+            const pages = props.pages
+            if (!pages) return
+
+            const page: string = router.currentRoute.value.params.page as never
+            const pageNo = parseInt(page) - 1
+
+            if (pageNo >= 0 && pageNo < pages.length) {
+              return h(Page, () => pages[pageNo])
+            }
+
+            if (pageNo >= pages.length) {
+              router.replace(`/${pages.length}`).finally(() => {})
+            } else {
+              router.replace('/1').finally(() => {})
+            }
+          },
+        }),
+      },
+    ]
+
+    const router = createRouter({
+      history: createWebHashHistory(),
+      routes,
+    })
+
+    async function prevPage() {
+      const page: string = router.currentRoute.value.params.page as never
+      const pageNo = parseInt(page) - 1
+      await router.replace(`/${pageNo}`)
+    }
+    onKeyStroke('ArrowLeft', prevPage)
+    async function nextPage() {
+      const page: string = router.currentRoute.value.params.page as never
+      const pageNo = parseInt(page) - 1
+      await router.replace(`/${pageNo + 2}`)
+    }
+    onKeyStroke('ArrowRight', nextPage)
+
     const fakeApp = {
       provide,
       component: () => {},
@@ -18,42 +59,9 @@ export default defineComponent({
         globalProperties: {},
       },
     }
-    const routes = [
-      {
-        path: '/',
-        component: defineComponent({
-          render() {
-            return h('div', [
-              'hello',
-              h(RouterLink, { to: '/about' }, () => 'link'),
-            ])
-          },
-        }),
-      },
-      {
-        path: '/about',
-        component: defineComponent({
-          render() {
-            return h('div', ['world'])
-          },
-        }),
-      },
-    ]
-    const router = createRouter({
-      history: createWebHashHistory(),
-      routes,
-    })
     router.install(fakeApp as never)
     onUnmounted(fakeApp.unmount)
-    return () =>
-      h('div', [h(RouterView), h('div', { class: 'container' }, props.pages)])
+    return () => h('div', [h(RouterView)])
   },
 })
 </script>
-
-<style>
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-</style>
