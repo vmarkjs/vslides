@@ -8,14 +8,35 @@
 @import './normalize.css';
 
 /* page content base style */
+p,
+a,
+blockquote,
+pre,
+code,
+ol,
+ul,
+li,
+dl,
+dt,
+dd {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
 
 ol,
 ul {
   padding-inline-start: 1rem;
 }
 
-/* page base layout */
+/* page base layout style */
+.vslides-page-view {
+  background-color: black;
+}
+
+.vslides-page {
+  background-color: white;
+}
 
 .vslides-page-content {
-  padding: 0 1.5rem;
+  padding: 1rem 2.25rem;
 }

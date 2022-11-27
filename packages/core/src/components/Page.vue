@@ -8,7 +8,9 @@
         transform: `translate(-50%, -50%) scale(${scale})`,
       }"
     >
-      <slot />
+      <div class="vslides-page-content">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
@@ -33,13 +35,12 @@ const scale = computed(() => {
 </script>
 
 <style>
+/* only positioning-related styles */
 .vslides-page-container {
   height: 100%;
   position: relative;
 }
-
 .vslides-page {
-  background-color: white;
   position: absolute;
   left: 50%;
   top: 50%;

@@ -31,7 +31,7 @@ export default function vitePlugin(option: VSlidesPluginOption): Plugin {
       await Promise.all(
         src.split('---').map(async (s) => {
           const { text } = await renderer.render(s)
-          code += `\npages.push(h('div', {class: 'vslides-page-content'}, ${text}));`
+          code += `\npages.push(${text});`
         }),
       )
 

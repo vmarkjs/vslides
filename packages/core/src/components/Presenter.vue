@@ -67,12 +67,11 @@ export default defineComponent({
 </script>
 
 <style>
+/* only positioning-related styles */
 .vslides-page-view {
   position: fixed;
   height: 100%;
   width: 100%;
   overflow: hidden;
-
-  background-color: black;
 }
 </style>
