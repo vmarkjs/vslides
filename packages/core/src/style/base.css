@@ -1,1 +1,11 @@
+/* VSlides style specification for core components.
+
+ * The base style defines clear, natural-looking, customization-friendly defaults. We use pure CSS 
+ * here to reduce hard dependencies as much as possible. Tailwind/UnoCSS are supported in slide or
+ * theme definitions. */
+
 @import './normalize.css';
+
+.vslides-page {
+  padding: 0 1.5rem;
+}
