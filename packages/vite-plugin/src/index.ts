@@ -25,7 +25,7 @@ export default function vitePlugin(option: VSlidesPluginOption): Plugin {
         return
       }
       let code = `\n\nimport { h, reactive } from "vue";`
-      code += `\nimport Presenter from "@vslides/core/components/Presenter.vue";`
+      code += `\nimport PageView from "@vslides/core/components/PageView.vue";`
       code += '\nimport "@vslides/core/style/base.css"'
       code += `\nexport const pages = reactive([]);`
       await Promise.all(
@@ -36,7 +36,7 @@ export default function vitePlugin(option: VSlidesPluginOption): Plugin {
       )
 
       // handle hmr
-      code += `\nconst _default = { setup() { return () => h(Presenter, { pages }) } };`
+      code += `\nconst _default = { setup() { return () => h(PageView, { pages }) } };`
       code += `\n_default.__hmrId = '${hash(id)}';`
       code += `\n_default.__file = '${id}';`
       code += `\n__VUE_HMR_RUNTIME__.createRecord(_default.__hmrId, _default);`

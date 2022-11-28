@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory, RouterView } from 'vue-router'
 import { onKeyStroke } from '@vueuse/core'
 
 import Page from './Page.vue'
+import EndPage from './EndPage.vue'
 
 export default defineComponent({
   props: { pages: Array<VNode> },
@@ -23,8 +24,12 @@ export default defineComponent({
               return h(Page, () => pages[pageNo])
             }
 
-            if (pageNo >= pages.length) {
-              router.replace(`/${pages.length}`)
+            if (pageNo === pages.length) {
+              return h(Page, () => h(EndPage))
+            }
+
+            if (pageNo > pages.length) {
+              router.replace(`/${pages.length + 1}`)
             } else {
               router.replace('/1')
             }
@@ -66,7 +71,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
 /* only positioning-related styles */
 .vslides-page-view {
   position: fixed;

@@ -34,7 +34,7 @@ const scale = computed(() => {
 })
 </script>
 
-<style>
+<style scoped>
 /* only positioning-related styles */
 .vslides-page-container {
   height: 100%;
@@ -44,5 +44,8 @@ const scale = computed(() => {
   position: absolute;
   left: 50%;
   top: 50%;
+}
+.vslides-page-content {
+  height: 100%;
 }
 </style>
