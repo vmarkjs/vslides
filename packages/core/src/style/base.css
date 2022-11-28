@@ -23,9 +23,17 @@ dd {
   line-height: 1.75rem;
 }
 
+p,
+ol,
+ul,
+dl {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.5rem;
+}
+
 ol,
 ul {
-  padding-inline-start: 1rem;
+  padding-inline-start: 1.5rem;
 }
 
 /* page base layout style */
@@ -38,5 +46,5 @@ ul {
 }
 
 .vslides-page-content {
-  padding: 1rem 2.25rem;
+  padding: 1rem 3rem;
 }
