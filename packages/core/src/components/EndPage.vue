@@ -1,6 +1,7 @@
 <template>
   <div class="vslides-end-page">END</div>
 </template>
+
 <style scoped>
 .vslides-end-page {
   position: absolute;
