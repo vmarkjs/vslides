@@ -60,7 +60,19 @@ export default defineComponent({
       routes,
     })
 
-    // setup
+    // register router on current component
+    const fakeApp = {
+      provide,
+      component: () => {},
+      unmount: () => {},
+      config: {
+        globalProperties: {},
+      },
+    }
+    router.install(fakeApp as never)
+    onUnmounted(fakeApp.unmount)
+
+    // setup prev/next page
     async function prevPage() {
       const pageNo = getCurrentPage(router)
       await router.replace(`/${pageNo - 1}`)
@@ -72,16 +84,7 @@ export default defineComponent({
     onKeyStroke('ArrowLeft', prevPage)
     onKeyStroke('ArrowRight', nextPage)
 
-    const fakeApp = {
-      provide,
-      component: () => {},
-      unmount: () => {},
-      config: {
-        globalProperties: {},
-      },
-    }
-    router.install(fakeApp as never)
-    onUnmounted(fakeApp.unmount)
+    // render router-view
     return () => h('div', { class: 'vslides-page-view' }, [h(RouterView)])
   },
 })
