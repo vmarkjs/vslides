@@ -3,9 +3,13 @@ import server from './plugins/server'
 import transform from './plugins/transform'
 
 interface VSlidesPluginOption {
-  filepath?: string
+  serveFile?: string | null | false
 }
 
 export default function vslidesPlugin(options?: VSlidesPluginOption): Plugin[] {
-  return [transform(), server(options?.filepath ?? '')]
+  const plugins = [transform()]
+  if (options?.serveFile) {
+    plugins.push(server(options.serveFile))
+  }
+  return plugins
 }

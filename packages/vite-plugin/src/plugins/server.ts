@@ -2,7 +2,7 @@ import { send, Plugin } from 'vite'
 
 export default function server(filepath: string): Plugin {
   return {
-    name: 'vslides/server',
+    name: 'vslides:server',
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         if (req.url !== '/') return next()

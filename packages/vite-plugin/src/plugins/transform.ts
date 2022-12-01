@@ -15,7 +15,7 @@ export default function transform(): Plugin {
     },
   })
   return {
-    name: 'vslides/transform',
+    name: 'vslides:transform',
     async transform(src, id) {
       if (!vslidesIdRegex.test(id)) {
         return

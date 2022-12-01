@@ -25,4 +25,4 @@ Some items:
 
 ---
 
-# Thanks
+# Thanks!
