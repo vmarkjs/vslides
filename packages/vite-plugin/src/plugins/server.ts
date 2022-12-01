@@ -18,6 +18,7 @@ export default function server(filepath: string): Plugin {
   <script type="module">
     import { createApp } from 'vue'
     import App from '/@fs${filepath}?vslides'
+    import 'uno.css'
     const app = createApp(App)
     app.mount('#app')
   </script>

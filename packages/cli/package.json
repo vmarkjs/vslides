@@ -20,6 +20,7 @@
     "@vslides/core": "workspace:^0.0.1",
     "@vslides/vite-plugin": "workspace:^0.0.1",
     "cac": "^6.7.14",
+    "unocss": "^0.47.4",
     "vite": "^3.2.4",
     "vue": "^3.2.45"
   },

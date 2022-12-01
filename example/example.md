@@ -13,6 +13,11 @@ Page content.
 - Item 1
 - Item 2
 
+```python
+print('hello')
+print('world')
+```
+
 ---
 
 # Third Page

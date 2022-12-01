@@ -3,6 +3,7 @@ import cac from 'cac'
 import { createServer } from 'vite'
 import vslidesPlugin from '@vslides/vite-plugin'
 import vue from '@vitejs/plugin-vue'
+import unocss from 'unocss/vite'
 
 async function serve(filename: string) {
   const filepath = path.resolve(filename)
@@ -14,7 +15,7 @@ async function serve(filename: string) {
       __VUE_OPTIONS_API__: false,
       __VUE_PROD_DEVTOOLS__: false,
     },
-    plugins: [vslidesPlugin({ filepath }), vue()],
+    plugins: [vslidesPlugin({ serveFile: filepath }), vue(), unocss()],
   })
   server.listen()
 }
