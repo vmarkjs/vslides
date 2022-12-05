@@ -51,6 +51,10 @@ export default defineComponent({
     // setup router
     const routes: RouteRecordRaw[] = [
       {
+        path: '/',
+        redirect: '/1',
+      },
+      {
         path: '/:page',
         component: PageRouter,
       },
