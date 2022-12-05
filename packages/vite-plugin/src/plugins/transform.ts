@@ -13,6 +13,7 @@ export default function transform(): Plugin {
         )}])`,
       }
     },
+    sanitize: false,
   })
   return {
     name: 'vslides:transform',

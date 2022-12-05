@@ -13,10 +13,14 @@ Page content.
 - Item 1
 - Item 2
 
+<div class="w-72 mx-auto px-8 border rounded-lg">
+
 ```python
 print('hello')
 print('world')
 ```
+
+</div>
 
 ---
 

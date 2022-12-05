@@ -53,6 +53,7 @@ importers:
       '@vslides/core': workspace:^0.0.1
       '@vslides/vite-plugin': workspace:^0.0.1
       cac: ^6.7.14
+      unocss: ^0.47.4
       vite: ^3.2.4
       vue: ^3.2.45
     dependencies:
@@ -60,6 +61,7 @@ importers:
       '@vslides/core': link:../core
       '@vslides/vite-plugin': link:../vite-plugin
       cac: 6.7.14
+      unocss: 0.47.4_vite@3.2.4
       vite: 3.2.4
       vue: 3.2.45
 
@@ -69,11 +71,11 @@ importers:
   packages/vite-plugin:
     specifiers:
       '@types/hash-sum': ^1.0.0
-      '@vmark/core': ^1.0.0
+      '@vmark/core': ^1.0.3
       hash-sum: ^2.0.0
       vite: ^3.2.4
     dependencies:
-      '@vmark/core': 1.0.0
+      '@vmark/core': 1.0.3
       hash-sum: 2.0.0
     devDependencies:
       '@types/hash-sum': 1.0.0
@@ -1699,8 +1701,8 @@ packages:
       vue: 3.2.45
     dev: false
 
-  /@vmark/core/1.0.0:
-    resolution: {integrity: sha512-fkF572r+2xM5GRL9z3wJXpQj8BnT57kO4LGDoD3QoU2i2ccGWWTj3Mz3xNb1sxpxy9P1JYZNlKpoQnAUUiSUVQ==}
+  /@vmark/core/1.0.3:
+    resolution: {integrity: sha512-m3brMtLJDKOFPkUp0vyYczjSeJKPx3NzlcPS8YZF9+v6Jx6zwKJDGfRziogRCojboy8Qdtaw/uuGL3/5cOyYkA==}
     dependencies:
       hast-to-hyperscript: 10.0.1
       rehype-raw: 6.1.1
