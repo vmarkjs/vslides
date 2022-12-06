@@ -13,7 +13,7 @@
   },
   "peerDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
-    "@vslides/core": "workspace:^0.0.1",
+    "@vslides/core": "workspace:^",
     "vite": "^3.0.0",
     "vue": "^3.0.0",
     "unocss": "^0.47.0"
