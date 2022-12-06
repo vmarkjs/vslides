@@ -52,18 +52,22 @@ importers:
       '@vitejs/plugin-vue': ^3.2.0
       '@vslides/core': workspace:^
       '@vslides/vite-plugin': workspace:^
+      '@vueuse/core': ^9.6.0
       cac: ^6.7.14
       unocss: ^0.47.4
       vite: ^3.2.4
       vue: ^3.2.45
+      vue-router: ^4.1.6
     dependencies:
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
       '@vslides/core': link:../core
       '@vslides/vite-plugin': link:../vite-plugin
+      '@vueuse/core': 9.6.0_vue@3.2.45
       cac: 6.7.14
       unocss: 0.47.4_vite@3.2.4
       vite: 3.2.4
       vue: 3.2.45
+      vue-router: 4.1.6_vue@3.2.45
 
   packages/core:
     specifiers: {}
@@ -74,14 +78,12 @@ importers:
       '@vmark/core': ^1.0.3
       '@vslides/core': workspace:^
       hash-sum: ^2.0.0
-      vite: ^3.2.4
     dependencies:
       '@vmark/core': 1.0.3
       '@vslides/core': link:../core
       hash-sum: 2.0.0
     devDependencies:
       '@types/hash-sum': 1.0.0
-      vite: 3.2.4
 
 packages:
 
@@ -4017,6 +4019,7 @@ packages:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: false
 
   /natural-compare-lite/1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
@@ -4274,6 +4277,7 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
 
   /posthtml-parser/0.10.2:
     resolution: {integrity: sha512-PId6zZ/2lyJi9LiKfe+i2xv57oEjJgWbsHGGANwos5AvdQp98i6AtamAl8gzSVFGfQ43Glb5D614cvZf012VKg==}
@@ -4455,6 +4459,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
 
   /rollup/3.2.5:
     resolution: {integrity: sha512-/Ha7HhVVofduy+RKWOQJrxe4Qb3xyZo+chcpYiD8SoQa4AG7llhupUtyfKSSrdBM2mWJjhM8wZwmbY23NmlIYw==}
@@ -4569,6 +4574,7 @@ packages:
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
+    dev: false
 
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
@@ -5025,6 +5031,7 @@ packages:
       rollup: 2.79.1
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
 
   /vite/3.2.4_@types+node@18.11.9:
     resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
