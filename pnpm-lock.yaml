@@ -72,10 +72,12 @@ importers:
     specifiers:
       '@types/hash-sum': ^1.0.0
       '@vmark/core': ^1.0.3
+      '@vslides/core': workspace:^
       hash-sum: ^2.0.0
       vite: ^3.2.4
     dependencies:
       '@vmark/core': 1.0.3
+      '@vslides/core': link:../core
       hash-sum: 2.0.0
     devDependencies:
       '@types/hash-sum': 1.0.0

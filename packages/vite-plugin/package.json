@@ -13,13 +13,13 @@
   },
   "peerDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
-    "@vslides/core": "workspace:^",
     "vite": "^3.0.0",
     "vue": "^3.0.0",
     "unocss": "^0.47.0"
   },
   "dependencies": {
     "@vmark/core": "^1.0.3",
+    "@vslides/core": "workspace:^",
     "hash-sum": "^2.0.0"
   },
   "devDependencies": {
