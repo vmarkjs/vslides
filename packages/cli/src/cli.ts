@@ -27,6 +27,11 @@ async function serve(filename: string) {
     optimizeDeps: {
       include: ['vue'],
     },
+    resolve: {
+      alias: {
+        '@vslides/core': '@vslides/core',
+      },
+    },
     define: {
       __VUE_OPTIONS_API__: false,
       __VUE_PROD_DEVTOOLS__: false,
