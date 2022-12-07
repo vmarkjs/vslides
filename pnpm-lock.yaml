@@ -8,7 +8,6 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.42.0
       '@typescript-eslint/parser': ^5.42.0
       '@vslides/cli': workspace:^
-      '@vslides/core': workspace:^
       eslint: ^8.26.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-prettier: ^4.2.1
@@ -21,7 +20,6 @@ importers:
       unbuild: ^0.9.4
     dependencies:
       '@vslides/cli': link:packages/cli
-      '@vslides/core': link:packages/core
     devDependencies:
       '@types/node': 18.11.9
       '@typescript-eslint/eslint-plugin': 5.42.0_6xw5wg2354iw4zujk2f3vyfrzu
