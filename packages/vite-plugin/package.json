@@ -23,6 +23,9 @@
     "hash-sum": "^2.0.0"
   },
   "devDependencies": {
-    "@types/hash-sum": "^1.0.0"
+    "@types/hash-sum": "^1.0.0",
+    "unocss": "^0.47.4",
+    "vite": "^3.2.4",
+    "vue": "^3.2.45"
   }
 }

@@ -12,13 +12,8 @@
     "build": "pnpm -r build"
   },
   "dependencies": {
-    "@vslides/cli": "workspace:^",
     "@vslides/core": "workspace:^",
-    "@vueuse/core": "^9.6.0",
-    "unocss": "^0.47.4",
-    "vite": "^3.2.4",
-    "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "@vslides/cli": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",

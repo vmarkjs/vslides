@@ -17,5 +17,10 @@
     "vue": "^3.0.0",
     "vue-router": "^4.0.0",
     "@vueuse/core": "^9.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6",
+    "@vueuse/core": "^9.6.0"
   }
 }
