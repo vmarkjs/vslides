@@ -12,7 +12,8 @@
     "build": "pnpm -r build"
   },
   "dependencies": {
-    "@vslides/cli": "workspace:^"
+    "@vslides/cli": "workspace:^",
+    "@vslides/core": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
