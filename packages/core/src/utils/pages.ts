@@ -1,6 +1,6 @@
 import { inject, InjectionKey, provide, VNode } from 'vue'
 
-const pagesSymbol = Symbol() as InjectionKey<VNode[]>
+const pagesSymbol = Symbol('pages') as InjectionKey<VNode[]>
 
 export function providePages(pages: VNode[]) {
   provide(pagesSymbol, pages)

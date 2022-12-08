@@ -1,9 +1,7 @@
 <template>
-  <div :class="$style['vslides-page-content']">
-    <component :is="props.layout">
-      <component :is="props.page"></component>
-    </component>
-  </div>
+  <component :is="props.layout" :class="$style['vslides-page-content']">
+    <component :is="props.page"></component>
+  </component>
 </template>
 
 <script setup lang="ts">
