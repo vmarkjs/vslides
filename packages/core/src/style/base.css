@@ -35,16 +35,3 @@ ol,
 ul {
   padding-inline-start: 1.5rem;
 }
-
-/* page base layout style */
-.vslides-page-view {
-  background-color: black;
-}
-
-.vslides-page {
-  background-color: white;
-}
-
-.vslides-page-content {
-  padding: 1rem 3rem;
-}

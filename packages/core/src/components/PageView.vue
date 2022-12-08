@@ -1,105 +1,64 @@
-<script lang="ts">
-import { VNode, defineComponent, h, provide, onUnmounted } from 'vue'
-import {
-  createRouter,
-  createWebHashHistory,
-  Router,
-  RouteRecordRaw,
-  RouterView,
-} from 'vue-router'
+<template>
+  <div :class="$style['vslides-page-view']">
+    <PageContainer>
+      <Page
+        v-if="pageNo >= 1 && pageNo <= pages.length"
+        :page="() => pages[pageNo - 1]"
+        :layout="DefaultLayout"
+      />
+      <EndPage v-else />
+    </PageContainer>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { onKeyStroke } from '@vueuse/core'
 
+import PageContainer from './PageContainer.vue'
+import DefaultLayout from './DefaultLayout.vue'
 import Page from './Page.vue'
 import EndPage from './EndPage.vue'
 
-function getCurrentPage(router: Router) {
-  const page: string = router.currentRoute.value.params.page as never
-  return parseInt(page)
-}
+import { usePages } from '..'
 
-export default defineComponent({
-  props: { pages: Array<VNode> },
-  setup(props) {
-    // dynamic routing for page view
-    const PageRouter = defineComponent({
-      name: 'PageRouter',
-      render() {
-        const pages = props.pages
-        if (!pages) return
+const props = defineProps<{ page: string }>()
+const router = useRouter()
+const pages = usePages()
+const pageNo = computed(() => parseInt(props.page || '1'))
 
-        const pageNo = getCurrentPage(router)
-
-        // render normal pages
-        if (pageNo >= 1 && pageNo <= pages.length) {
-          return h(Page, () => pages[pageNo - 1])
-        }
-
-        // render end page
-        if (pageNo === pages.length + 1) {
-          return h(Page, () => h(EndPage))
-        }
-
-        // normalize other values
-        if (pageNo > pages.length + 1) {
-          router.replace(`/${pages.length + 1}`)
-        } else {
-          router.replace('/1')
-        }
-      },
-    })
-
-    // setup router
-    const routes: RouteRecordRaw[] = [
-      {
-        path: '/',
-        redirect: '/1',
-      },
-      {
-        path: '/:page',
-        component: PageRouter,
-      },
-    ]
-    const router = createRouter({
-      history: createWebHashHistory(),
-      routes,
-    })
-
-    // register router on current component
-    const fakeApp = {
-      provide,
-      component: () => {},
-      unmount: () => {},
-      config: {
-        globalProperties: {},
-      },
+// normalize page
+watch(
+  pageNo,
+  (n) => {
+    if (isNaN(n) || n < 1) {
+      router.replace('/1')
+    } else if (n > pages.length + 1) {
+      router.replace(`/${pages.length + 1}`)
     }
-    router.install(fakeApp as never)
-    onUnmounted(fakeApp.unmount)
-
-    // setup prev/next page
-    async function prevPage() {
-      const pageNo = getCurrentPage(router)
-      await router.replace(`/${pageNo - 1}`)
-    }
-    async function nextPage() {
-      const pageNo = getCurrentPage(router)
-      await router.replace(`/${pageNo + 1}`)
-    }
-    onKeyStroke('ArrowLeft', prevPage)
-    onKeyStroke('ArrowRight', nextPage)
-
-    // render router-view
-    return () => h('div', { class: 'vslides-page-view' }, [h(RouterView)])
   },
-})
+  { immediate: true },
+)
+
+// setup prev/next page
+async function prevPage() {
+  await router.replace(`/${pageNo.value - 1}`)
+}
+async function nextPage() {
+  await router.replace(`/${pageNo.value + 1}`)
+}
+onKeyStroke('ArrowLeft', prevPage)
+onKeyStroke('ArrowRight', nextPage)
 </script>
 
-<style scoped>
-/* only positioning-related styles */
+<style module>
 .vslides-page-view {
+  background-color: black;
   position: fixed;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 </style>
