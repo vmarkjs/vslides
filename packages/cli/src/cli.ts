@@ -18,6 +18,7 @@ async function serve(filename: string) {
     plugins: [vslidesPlugin({ serveFile: filePath }), vue(), unocss()],
   })
   server.listen()
+  console.log('http://localhost:5173')
 }
 
 const cli = cac('vslides')
