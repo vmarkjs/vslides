@@ -37,7 +37,7 @@ export default function transform(): Plugin {
 
       const nodes = await parser.parse(src)
       nodes.forEach((node) => {
-        cg.stmt(`pages.push(${node});`)
+        cg.stmt(`pages.push(${node.text});`)
       })
 
       cg.blank()

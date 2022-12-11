@@ -16,32 +16,34 @@ describe('test markdown parser', () => {
   const parser = new MarkdownParser(renderer)
 
   it('should split normal pages', async () => {
-    let lines = await parser.parse(
+    let nodes = await parser.parse(
       'page 1\n\n---\n\npage 2\n\n---\n\ntest page',
     )
-    expect(lines).toHaveLength(3)
+    expect(nodes).toHaveLength(3)
 
-    lines = await parser.parse('page 1\n\n---\n\npage 2\n---')
-    expect(lines).toHaveLength(2)
+    nodes = await parser.parse('page 1\n\n---\n\npage 2\n---')
+    expect(nodes).toHaveLength(2)
 
-    lines = await parser.parse('page 1\n\n---\n\npage 2\n\n---\n')
-    expect(lines).toHaveLength(3)
+    nodes = await parser.parse('---\n\npage 1\n\n---\n\npage 2\n\n---\n')
+    expect(nodes).toHaveLength(4)
   })
 
   it('should split on frontmatter', async () => {
-    let lines = await parser.parse(
+    let nodes = await parser.parse(
       '---\nlayout: cover\n---\n\n# Page 1\n\n---\n\n#Page 2\n',
     )
-    expect(lines).toHaveLength(2)
+    expect(nodes).toHaveLength(2)
 
-    lines = await parser.parse(
+    nodes = await parser.parse(
       '---\nlayout: cover\n---\n\n# Page 1\n\n---\nlayout: two-cols\n---\n\n#Page 2\n',
     )
-    expect(lines).toHaveLength(2)
+    expect(nodes).toHaveLength(2)
+    expect(nodes[0].frontmatter).toStrictEqual({ layout: 'cover' })
 
-    lines = await parser.parse(
+    nodes = await parser.parse(
       '---\nlayout: cover\n---\n\n# Page 1\n\n---\nlayout: two-cols\n---\n',
     )
-    expect(lines).toHaveLength(2)
+    expect(nodes).toHaveLength(2)
+    expect(nodes[1].frontmatter).toStrictEqual({ layout: 'two-cols' })
   })
 })

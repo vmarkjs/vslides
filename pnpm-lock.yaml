@@ -80,10 +80,12 @@ importers:
       unocss: ^0.47.4
       vite: ^3.2.4
       vue: ^3.2.45
+      yaml: ^2.1.3
     dependencies:
       '@vmark/core': 1.0.3
       '@vslides/core': link:../core
       hash-sum: 2.0.0
+      yaml: 2.1.3
     devDependencies:
       '@types/hash-sum': 1.0.0
       unocss: 0.47.4_vite@3.2.5
@@ -5211,7 +5213,6 @@ packages:
   /yaml/2.1.3:
     resolution: {integrity: sha512-AacA8nRULjKMX2DvWvOAdBZMOfQlypSFkjcOcu9FalllIDJ1kvlREzcdIZmidQUqqeMv7jorHjq2HlLv/+c2lg==}
     engines: {node: '>= 14'}
-    dev: true
 
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}

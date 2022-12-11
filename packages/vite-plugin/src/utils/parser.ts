@@ -1,31 +1,55 @@
 import VMarkRenderer from '@vmark/core'
+import { parse } from 'yaml'
 
 export default class MarkdownParser {
   constructor(private renderer: VMarkRenderer<{ text: string }>) {}
 
   async parse(src: string) {
-    const nodes: string[] = []
+    const nodes: { text: string; frontmatter?: string }[] = []
+
+    // eat all leading spaces
+    src = src.trimStart()
+
+    // add additional page
+    if (src.startsWith('---\n\n')) {
+      src = '\n\n' + src
+    }
 
     while (true) {
-      // eat all leading spaces
-      src = src.trimStart()
-
       // find page boundary
+      //                      +0 1234 5 6
       const pos = src.search(/\n\n---\n/m)
 
-      if (pos === -1) {
-        nodes.push((await this.renderer.render(src)).text)
-        break
+      const page = pos === -1 ? src : src.slice(0, pos)
+      const node = await this.parsePage(page)
+      nodes.push(node)
+
+      if (pos === -1) break
+
+      if (src[pos + 6] === '\n') {
+        // skips ---
+        src = src.slice(pos + 7)
       } else {
-        nodes.push((await this.renderer.render(src.slice(0, pos))).text)
-        if (src[pos + 6] === '\n') {
-          src = src.slice(pos + 7)
-        } else {
-          src = src.slice(pos + 2)
-        }
+        // preserves frontmatter
+        src = src.slice(pos + 2)
       }
     }
 
     return nodes
+  }
+
+  async parsePage(page: string) {
+    let frontmatter
+    if (page.startsWith('---\n')) {
+      const last = page.search('\n---')
+      const fm = page.slice(4, last)
+      page = page.slice(last + 6)
+      frontmatter = parse(fm)
+    }
+    const r = await this.renderer.render(page)
+    return {
+      text: r.text,
+      frontmatter,
+    }
   }
 }
