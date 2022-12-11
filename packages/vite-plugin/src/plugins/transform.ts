@@ -10,22 +10,22 @@ export default function transform(): Plugin {
   const renderer = new VMarkRenderer({
     h(name, attr, children) {
       return {
-        text: `h("${name}", ${JSON.stringify(attr)}, [${children?.map(
-          (c) => c.text || JSON.stringify(c),
-        )}])`,
+        text: `h("${name}",${JSON.stringify(attr)},[${
+          children ? children.map((c) => c.text || JSON.stringify(c)) : ''
+        }])`,
       }
     },
     sanitize: false,
   })
+  const parser = new MarkdownParser(renderer)
+  const cg = new CodeGen()
+
   return {
     name: 'vslides:transform',
     async transform(src, id) {
       if (!vslidesIdRegex.test(id)) {
         return
       }
-
-      const parser = new MarkdownParser(renderer, src)
-      const cg = new CodeGen()
 
       cg.import(['h', 'reactive'], 'vue')
       cg.import('App', '@vslides/core/components/App.vue')
@@ -35,7 +35,7 @@ export default function transform(): Plugin {
 
       cg.stmt('export const pages = reactive([]);')
 
-      const nodes = await parser.parse()
+      const nodes = await parser.parse(src)
       nodes.forEach((node) => {
         cg.stmt(`pages.push(${node});`)
       })

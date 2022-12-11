@@ -22,6 +22,8 @@ export default class CodeGen {
   }
 
   generate() {
-    return '\n\n' + this.lines.join('\n') + '\n\n'
+    const code = '\n\n' + this.lines.join('\n') + '\n\n'
+    this.lines = []
+    return code
   }
 }
