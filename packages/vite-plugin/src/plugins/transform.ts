@@ -1,6 +1,8 @@
 import { Plugin } from 'vite'
 import hash from 'hash-sum'
 import VMarkRenderer from '@vmark/core'
+import MarkdownParser from '../utils/parser'
+import CodeGen from '../utils/codegen'
 
 const vslidesIdRegex = /\.md\?vslides$/
 
@@ -21,25 +23,41 @@ export default function transform(): Plugin {
       if (!vslidesIdRegex.test(id)) {
         return
       }
-      let code = `\n\nimport { h, reactive } from "vue";`
-      code += `\nimport App from "@vslides/core/components/App.vue";`
-      code += '\nimport "@vslides/core/style/base.css"'
-      code += `\nexport const pages = reactive([]);`
-      await Promise.all(
-        src.split('---').map(async (s) => {
-          const { text } = await renderer.render(s)
-          code += `\npages.push(${text});`
-        }),
-      )
+
+      const parser = new MarkdownParser(renderer, src)
+      const cg = new CodeGen()
+
+      cg.import(['h', 'reactive'], 'vue')
+      cg.import('App', '@vslides/core/components/App.vue')
+      cg.import('@vslides/core/style/base.css')
+
+      cg.blank()
+
+      cg.stmt('export const pages = reactive([]);')
+
+      const nodes = await parser.parse()
+      nodes.forEach((node) => {
+        cg.stmt(`pages.push(${node});`)
+      })
+
+      cg.blank()
 
       // handle hmr
-      code += `\nconst _default = { setup() { return () => h(App, { pages }) } };`
-      code += `\n_default.__hmrId = '${hash(id)}';`
-      code += `\n_default.__file = '${id}';`
-      code += `\n__VUE_HMR_RUNTIME__.createRecord(_default.__hmrId, _default);`
-      code += `\nimport.meta.hot.accept(({ default: _default }) => { __VUE_HMR_RUNTIME__.reload(_default.__hmrId, _default) });`
-      code += `\nexport default _default;\n\n`
-      return code
+      cg.stmt(
+        'const _default = { setup() { return () => h(App, { pages }) } };',
+      )
+      cg.stmt(`_default.__hmrId = "${hash(id)}";`)
+      cg.stmt(`_default.__file = "${id}";`)
+      cg.stmt('__VUE_HMR_RUNTIME__.createRecord(_default.__hmrId, _default);')
+      cg.stmt(
+        'import.meta.hot.accept(({ default: _default }) => { __VUE_HMR_RUNTIME__.reload(_default.__hmrId, _default) });',
+      )
+
+      cg.blank()
+
+      cg.stmt('export default _default;')
+
+      return cg.generate()
     },
   }
 }
