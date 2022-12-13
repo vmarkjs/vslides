@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Page, useTheme } from '..'
+import { Page, useTheme } from '../..'
 import DefaultLayout from './DefaultLayout.vue'
 
 const props = defineProps<{

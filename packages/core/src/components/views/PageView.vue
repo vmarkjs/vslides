@@ -15,11 +15,11 @@ import { computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { onKeyStroke } from '@vueuse/core'
 
-import PageContainer from './PageContainer.vue'
-import Page from './Page.vue'
-import EndPage from './EndPage.vue'
+import PageContainer from '../common/PageContainer.vue'
+import Page from '../common/Page.vue'
+import EndPage from '../common/EndPage.vue'
 
-import { usePages } from '..'
+import { usePages } from '../..'
 
 const props = defineProps<{ page: string }>()
 const router = useRouter()

@@ -7,7 +7,7 @@ import {
   RouterView,
 } from 'vue-router'
 
-import PageView from './PageView.vue'
+import PageView from './views/PageView.vue'
 
 import { Page, providePages, Theme, provideTheme } from '..'
 
