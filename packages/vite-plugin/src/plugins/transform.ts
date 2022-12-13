@@ -44,8 +44,6 @@ export default function transform(): Plugin {
       cg.blank()
 
       cg.stmt('export const pages = [];')
-      cg.stmt('export const settings = [];')
-
       nodes.forEach((node) => {
         cg.stmt(
           `pages.push({ component: () => ${node.text}, config: ${JSON.stringify(
