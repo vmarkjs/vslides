@@ -7,6 +7,10 @@
 /* normalize first */
 @import './normalize.css';
 
+body {
+  font: sans-serif;
+}
+
 /* page content base style */
 p,
 a,

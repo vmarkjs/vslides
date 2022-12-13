@@ -6,12 +6,10 @@
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/",
-    "components/",
-    "style/"
+    "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist components style && unbuild"
+    "build": "rimraf dist && unbuild"
   },
   "peerDependencies": {
     "vue": "^3.0.0",

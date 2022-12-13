@@ -4,12 +4,12 @@ export default {
     {
       builder: 'mkdist',
       input: 'src/components/',
-      outDir: 'components/',
+      outDir: 'dist/components/',
     },
     {
       builder: 'mkdist',
       input: 'src/style/',
-      outDir: 'style/',
+      outDir: 'dist/style/',
     },
   ],
   declaration: true,

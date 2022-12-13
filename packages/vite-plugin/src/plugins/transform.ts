@@ -28,8 +28,8 @@ export default function transform(): Plugin {
       }
 
       cg.import(['h', 'reactive'], 'vue')
-      cg.import('App', '@vslides/core/components/App.vue')
-      cg.import('@vslides/core/style/base.css')
+      cg.import('App', '@vslides/core/dist/components/App.vue')
+      cg.import('@vslides/core/dist/style/base.css')
 
       cg.blank()
 
