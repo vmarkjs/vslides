@@ -1,5 +1,11 @@
+---
+title: VSlides Example
+---
+
 # Welcome to VSlides!
 
+---
+layout: cover
 ---
 
 # First Page

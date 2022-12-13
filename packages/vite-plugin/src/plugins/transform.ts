@@ -33,11 +33,13 @@ export default function transform(): Plugin {
 
       cg.blank()
 
-      cg.stmt('export const pages = reactive([]);')
+      cg.stmt('export const pages = [];')
+      cg.stmt('export const settings = [];')
 
       const nodes = await parser.parse(src)
       nodes.forEach((node) => {
         cg.stmt(`pages.push(${node.text});`)
+        cg.stmt(`settings.push(${JSON.stringify(node.frontmatter)});`)
       })
 
       cg.blank()
