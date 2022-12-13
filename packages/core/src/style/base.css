@@ -8,7 +8,7 @@
 @import './normalize.css';
 
 body {
-  font: sans-serif;
+  font-family: sans-serif;
 }
 
 /* page content base style */

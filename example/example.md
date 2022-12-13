@@ -41,5 +41,7 @@ Some items:
 * Item 3
 
 ---
+layout: cover
+---
 
 # Thanks!
