@@ -6,6 +6,8 @@ layout: cover
 
 # Welcome to VSlides!
 
+[example slide]
+
 ---
 
 # First Page
