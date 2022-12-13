@@ -1,4 +1,5 @@
 *.md
 !README.md
 dist/
+packages/core/components/
 pnpm-lock.yaml
