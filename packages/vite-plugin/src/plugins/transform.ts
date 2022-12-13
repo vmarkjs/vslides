@@ -33,20 +33,32 @@ export default function transform(): Plugin {
 
       cg.blank()
 
+      const nodes = await parser.parse(src)
+      if (nodes[0].frontmatter?.theme) {
+        const theme = nodes[0].frontmatter.theme
+        cg.import('theme', theme)
+      } else {
+        cg.stmt('const theme = undefined;')
+      }
+
+      cg.blank()
+
       cg.stmt('export const pages = [];')
       cg.stmt('export const settings = [];')
 
-      const nodes = await parser.parse(src)
       nodes.forEach((node) => {
-        cg.stmt(`pages.push(${node.text});`)
-        cg.stmt(`settings.push(${JSON.stringify(node.frontmatter)});`)
+        cg.stmt(
+          `pages.push({ component: () => ${node.text}, config: ${JSON.stringify(
+            node.frontmatter,
+          )} });`,
+        )
       })
 
       cg.blank()
 
       // handle hmr
       cg.stmt(
-        'const _default = { setup() { return () => h(App, { pages }) } };',
+        'const _default = { setup() { return () => h(App, { pages, theme }) } };',
       )
       cg.stmt(`_default.__hmrId = "${hash(id)}";`)
       cg.stmt(`_default.__file = "${id}";`)

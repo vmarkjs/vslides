@@ -5,7 +5,8 @@ export default class MarkdownParser {
   constructor(private renderer: VMarkRenderer<{ text: string }>) {}
 
   async parse(src: string) {
-    const nodes: { text: string; frontmatter?: string }[] = []
+    // TODO: more specific config type
+    const nodes: { text: string; frontmatter?: Record<string, string> }[] = []
 
     // eat all leading spaces
     src = src.trimStart()

@@ -3,8 +3,7 @@
     <PageContainer>
       <Page
         v-if="pageNo >= 1 && pageNo <= pages.length"
-        :page="() => pages[pageNo - 1]"
-        :layout="DefaultLayout"
+        :page="pages[pageNo - 1]"
       />
       <EndPage v-else />
     </PageContainer>
@@ -17,7 +16,6 @@ import { useRouter } from 'vue-router'
 import { onKeyStroke } from '@vueuse/core'
 
 import PageContainer from './PageContainer.vue'
-import DefaultLayout from './DefaultLayout.vue'
 import Page from './Page.vue'
 import EndPage from './EndPage.vue'
 

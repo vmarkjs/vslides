@@ -1,11 +1,11 @@
 ---
 title: VSlides Example
+theme: ./theme
+layout: cover
 ---
 
 # Welcome to VSlides!
 
----
-layout: cover
 ---
 
 # First Page

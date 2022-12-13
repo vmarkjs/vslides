@@ -1,27 +1,28 @@
 <script lang="ts">
-import { VNode, defineComponent, h, provide, onUnmounted } from 'vue'
+import { defineComponent, h, provide, onUnmounted, PropType } from 'vue'
 import {
   createRouter,
   createWebHashHistory,
-  Router,
   RouteRecordRaw,
   RouterView,
 } from 'vue-router'
 
 import PageView from './PageView.vue'
 
-import { providePages } from '..'
-
-function getCurrentPage(router: Router) {
-  const page: string = router.currentRoute.value.params.page as never
-  return parseInt(page)
-}
+import { Page, providePages, Theme, provideTheme } from '..'
 
 export default defineComponent({
-  props: { pages: Array<VNode> },
+  props: {
+    pages: {
+      type: Array<Page>,
+      required: true,
+    },
+    theme: Object as PropType<Theme>,
+  },
   setup(props) {
-    // provide pages for the whole app
-    providePages(props.pages || [])
+    // provide data for the whole app
+    providePages(props.pages)
+    provideTheme(props.theme)
 
     // setup router
     const routes: RouteRecordRaw[] = [

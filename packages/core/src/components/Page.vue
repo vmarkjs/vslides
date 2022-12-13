@@ -1,16 +1,25 @@
 <template>
-  <component :is="props.layout" :class="$style['vslides-page-content']">
-    <component :is="props.page"></component>
+  <component :is="layout" :class="$style['vslides-page-content']">
+    <component :is="page"></component>
   </component>
 </template>
 
 <script setup lang="ts">
-import { ComponentOptions } from 'vue'
+import { computed } from 'vue'
+import { Page, useTheme } from '..'
+import DefaultLayout from './DefaultLayout.vue'
 
 const props = defineProps<{
-  page: ComponentOptions
-  layout: ComponentOptions
+  page: Page
 }>()
+const theme = useTheme()
+
+const layout = computed(() =>
+  props.page.config?.layout && theme?.layouts
+    ? theme.layouts[props.page.config.layout] ?? DefaultLayout
+    : DefaultLayout,
+)
+const page = computed(() => props.page.component)
 </script>
 
 <style module>

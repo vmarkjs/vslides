@@ -1,8 +1,13 @@
-import { inject, InjectionKey, provide, VNode } from 'vue'
+import { ComponentOptions, inject, InjectionKey, provide } from 'vue'
 
-const pagesSymbol = Symbol('pages') as InjectionKey<VNode[]>
+export interface Page {
+  component: ComponentOptions
+  config?: Record<string, string>
+}
 
-export function providePages(pages: VNode[]) {
+const pagesSymbol = Symbol('pages') as InjectionKey<Page[]>
+
+export function providePages(pages: Page[]) {
   provide(pagesSymbol, pages)
 }
 
