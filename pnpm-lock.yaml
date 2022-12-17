@@ -71,11 +71,20 @@ importers:
       vue: 3.2.45
       vue-router: 4.1.6_vue@3.2.45
 
+  packages/parser:
+    specifiers:
+      '@vmark/core': ^1.0.3
+      yaml: ^2.1.3
+    dependencies:
+      '@vmark/core': 1.0.3
+      yaml: 2.1.3
+
   packages/vite-plugin:
     specifiers:
       '@types/hash-sum': ^1.0.0
       '@vmark/core': ^1.0.3
       '@vslides/core': workspace:^
+      '@vslides/parser': workspace:^
       hash-sum: ^2.0.0
       unocss: ^0.47.6
       vite: ^4.0.0
@@ -84,6 +93,7 @@ importers:
     dependencies:
       '@vmark/core': 1.0.3
       '@vslides/core': link:../core
+      '@vslides/parser': link:../parser
       hash-sum: 2.0.0
       yaml: 2.1.3
     devDependencies:

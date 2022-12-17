@@ -1,7 +1,7 @@
 import { Plugin } from 'vite'
 import hash from 'hash-sum'
 import VMarkRenderer from '@vmark/core'
-import MarkdownParser from '../utils/parser'
+import VSlidesParser from '@vslides/parser'
 import CodeGen from '../utils/codegen'
 
 const vslidesIdRegex = /\.md\?vslides$/
@@ -17,7 +17,7 @@ export default function transform(): Plugin {
     },
     sanitize: false,
   })
-  const parser = new MarkdownParser(renderer)
+  const parser = new VSlidesParser(renderer)
   const cg = new CodeGen()
 
   return {
@@ -44,11 +44,11 @@ export default function transform(): Plugin {
       cg.blank()
 
       cg.stmt('export const pages = [];')
-      nodes.forEach((node) => {
+      nodes.forEach((page) => {
         cg.stmt(
-          `pages.push({ component: () => ${node.text}, config: ${JSON.stringify(
-            node.frontmatter,
-          )} });`,
+          `pages.push({ component: () => ${
+            page.node.text
+          }, config: ${JSON.stringify(page.frontmatter)} });`,
         )
       })
 

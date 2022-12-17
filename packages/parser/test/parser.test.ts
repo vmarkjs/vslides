@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import VMarkRenderer from '@vmark/core'
-import MarkdownParser from '../src/utils/parser'
+import VSlidesParser from '../src'
 
 describe('test markdown parser', () => {
   const renderer = new VMarkRenderer({
@@ -13,7 +13,7 @@ describe('test markdown parser', () => {
     },
     sanitize: false,
   })
-  const parser = new MarkdownParser(renderer)
+  const parser = new VSlidesParser(renderer)
 
   it('should split normal pages', async () => {
     let nodes = await parser.parse(

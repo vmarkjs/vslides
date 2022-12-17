@@ -1,12 +1,12 @@
 import VMarkRenderer from '@vmark/core'
 import { parse } from 'yaml'
 
-export default class MarkdownParser {
-  constructor(private renderer: VMarkRenderer<{ text: string }>) {}
+export default class VSlidesParser<T extends object> {
+  constructor(private renderer: VMarkRenderer<T>) {}
 
   async parse(src: string) {
     // TODO: more specific config type
-    const nodes: { text: string; frontmatter?: Record<string, string> }[] = []
+    const nodes: { node: T; frontmatter?: Record<string, string> }[] = []
 
     // eat all leading spaces
     src = src.trimStart()
@@ -49,7 +49,7 @@ export default class MarkdownParser {
     }
     const r = await this.renderer.render(page)
     return {
-      text: r.text,
+      node: r,
       frontmatter,
     }
   }
