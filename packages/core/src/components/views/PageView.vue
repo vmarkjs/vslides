@@ -53,7 +53,7 @@ onKeyStroke('ArrowRight', nextPage)
 <style module>
 .vslides-page-view {
   background-color: black;
-  position: fixed;
+  position: absolute;
   top: 0px;
   bottom: 0px;
   left: 0px;
