@@ -9,7 +9,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist && unbuild"
+    "build": "unbuild"
   },
   "dependencies": {
     "@vmark/core": "^1.0.3",

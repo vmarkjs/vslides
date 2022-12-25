@@ -12,7 +12,7 @@
     "vslides": "bin/vslides.mjs"
   },
   "scripts": {
-    "build": "rimraf dist && unbuild"
+    "build": "unbuild"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^3.2.0",

@@ -9,7 +9,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist && unbuild"
+    "build": "unbuild"
   },
   "peerDependencies": {
     "vue": "^3.0.0",
