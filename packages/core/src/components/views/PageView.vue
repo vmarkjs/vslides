@@ -15,9 +15,9 @@ import { computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { onKeyStroke } from '@vueuse/core'
 
-import PageContainer from '../common/PageContainer.vue'
-import Page from '../common/Page.vue'
-import EndPage from '../common/EndPage.vue'
+import PageContainer from '../page/PageContainer.vue'
+import Page from '../page/Page.vue'
+import EndPage from '../page/EndPage.vue'
 
 import { usePages } from '../..'
 
