@@ -1,5 +1,5 @@
 ---
-title: VSlides Example
+title: VSlides Tutorial
 theme: ./theme
 layout: cover
 ---
