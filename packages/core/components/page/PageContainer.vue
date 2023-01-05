@@ -17,8 +17,8 @@
 import { computed, ref } from 'vue'
 import { useElementSize } from '@vueuse/core'
 
-const canvasWidth = 960
-const canvasHeight = 540
+const canvasWidth = 1280
+const canvasHeight = 720
 const aspect = canvasWidth / canvasHeight
 
 const container = ref(null)

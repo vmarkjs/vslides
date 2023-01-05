@@ -9,3 +9,12 @@ layout: cover
 ---
 
 # Contents
+
+- Architecture
+  - Project structure
+  - Example use-cases
+  - Theming mechanism
+- Design
+  - Page architecture
+  - Base styling
+  - Syntax reference
