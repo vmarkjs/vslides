@@ -4,10 +4,11 @@ import transform from './plugins/transform'
 
 interface VSlidesPluginOption {
   serveFile?: string | null | false
+  transformRegex?: RegExp
 }
 
 export default function vslidesPlugin(options?: VSlidesPluginOption): Plugin[] {
-  const plugins = [transform()]
+  const plugins = [transform(options?.transformRegex)]
   if (options?.serveFile) {
     plugins.push(server(options.serveFile))
   }
