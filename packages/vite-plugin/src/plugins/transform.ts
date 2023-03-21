@@ -59,10 +59,12 @@ export default function transform(transformRegex?: RegExp): Plugin {
       )
       cg.stmt(`_default.__hmrId = "${hash(id)}";`)
       cg.stmt(`_default.__file = "${id}";`)
+      cg.stmt('if (import.meta.hot) {')
       cg.stmt('__VUE_HMR_RUNTIME__.createRecord(_default.__hmrId, _default);')
       cg.stmt(
         'import.meta.hot.accept(({ default: _default }) => { __VUE_HMR_RUNTIME__.reload(_default.__hmrId, _default) });',
       )
+      cg.stmt('}')
 
       cg.blank()
 
