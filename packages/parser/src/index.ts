@@ -49,7 +49,7 @@ export default class VSlidesParser<T extends object> {
     }
     const r = await this.renderer.render(page)
     return {
-      node: r,
+      node: r.result,
       frontmatter,
     }
   }

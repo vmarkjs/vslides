@@ -1,6 +1,6 @@
 {
   "name": "@vslides/core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "license": "MIT",
   "main": "dist/index.mjs",
@@ -14,13 +14,13 @@
     "build": "unbuild"
   },
   "peerDependencies": {
+    "@vueuse/core": "^9.0.0",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0",
-    "@vueuse/core": "^9.0.0"
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
-    "vue": "^3.2.45",
-    "vue-router": "^4.1.6",
-    "@vueuse/core": "^9.6.0"
+    "@vueuse/core": "^9.13.0",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   }
 }

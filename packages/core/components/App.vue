@@ -2,6 +2,7 @@
 import { defineComponent, h, provide, onUnmounted, PropType } from 'vue'
 import {
   createRouter,
+  createMemoryHistory,
   createWebHashHistory,
   RouteRecordRaw,
   RouterView,
@@ -37,7 +38,9 @@ export default defineComponent({
       },
     ]
     const router = createRouter({
-      history: createWebHashHistory(),
+      history: import.meta.env.SSR
+        ? createMemoryHistory()
+        : createWebHashHistory(),
       routes,
     })
 
