@@ -33,8 +33,12 @@ export default function transform(transformRegex?: RegExp): Plugin {
       cg.blank()
 
       const nodes = await parser.parse(src)
-      if (nodes[0].frontmatter?.theme) {
-        const theme = nodes[0].frontmatter.theme
+
+      const frontmatter = nodes[0].frontmatter
+      cg.stmt(`export const frontmatter = ${JSON.stringify(frontmatter)};`)
+
+      if (frontmatter?.theme) {
+        const theme = frontmatter.theme
         cg.import('theme', theme)
       } else {
         cg.stmt('const theme = undefined;')
