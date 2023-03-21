@@ -4,9 +4,8 @@ import VMarkRenderer from '@vmark/core'
 import VSlidesParser from '@vslides/parser'
 import CodeGen from '../utils/codegen'
 
-const vslidesIdRegex = /\.md\?vslides$/
-
-export default function transform(): Plugin {
+export default function transform(transformRegex?: RegExp): Plugin {
+  const regex = transformRegex ?? /\.md\?vslides$/
   const renderer = new VMarkRenderer({
     h(name, attr, children) {
       return {
@@ -23,13 +22,13 @@ export default function transform(): Plugin {
   return {
     name: 'vslides:transform',
     async transform(src, id) {
-      if (!vslidesIdRegex.test(id)) {
+      if (!regex.test(id)) {
         return
       }
 
       cg.import(['h', 'reactive'], 'vue')
-      cg.import('App', '@vslides/core/dist/components/App.vue')
-      cg.import('@vslides/core/dist/style/base.css')
+      cg.import('App', '@vslides/core/components/App.vue')
+      cg.import('@vslides/core/style/base.css')
 
       cg.blank()
 
