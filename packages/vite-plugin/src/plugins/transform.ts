@@ -26,7 +26,7 @@ export default function transform(transformRegex?: RegExp): Plugin {
         return
       }
 
-      cg.import(['h', 'reactive'], 'vue')
+      cg.import(['h'], 'vue')
       cg.import('App', '@vslides/core/components/App.vue')
       cg.import('@vslides/core/style/base.css')
 
