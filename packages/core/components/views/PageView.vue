@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style['vslides-page-view']">
+  <div :class="$style['vslides-page-view']" @click="onClick">
     <PageContainer>
       <Page
         v-if="pageNo >= 1 && pageNo <= pages.length"
@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { onKeyStroke } from '@vueuse/core'
+import { onKeyStroke, useWindowSize } from '@vueuse/core'
 
 import PageContainer from '../page/PageContainer.vue'
 import Page from '../page/Page.vue'
@@ -48,6 +48,19 @@ async function nextPage() {
 }
 onKeyStroke('ArrowLeft', prevPage)
 onKeyStroke('ArrowRight', nextPage)
+
+const { width } = useWindowSize()
+function onClick(e: MouseEvent) {
+  const target = e?.target as HTMLElement | undefined
+  if (!target || target.tagName !== 'DIV' || target.onclick !== null) {
+    return
+  }
+  if (e.pageX / width.value < 0.25) {
+    prevPage()
+  } else if (e.pageX / width.value > 0.75) {
+    nextPage()
+  }
+}
 </script>
 
 <style module>
