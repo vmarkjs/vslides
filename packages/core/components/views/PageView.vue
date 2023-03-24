@@ -52,7 +52,12 @@ onKeyStroke('ArrowRight', nextPage)
 const { width } = useWindowSize()
 function onClick(e: MouseEvent) {
   const target = e?.target as HTMLElement | undefined
-  if (!target || target.tagName !== 'DIV' || target.onclick !== null) {
+  if (
+    !target ||
+    target.tagName === 'A' ||
+    target.tagName === 'BUTTON' ||
+    target.onclick !== null
+  ) {
     return
   }
   if (e.pageX / width.value < 0.25) {
