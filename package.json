@@ -9,26 +9,27 @@
     "format": "prettier --write --cache .",
     "lint": "eslint --fix  --cache .",
     "prepare": "husky install",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "test": "vitest run"
   },
   "dependencies": {
     "@vslides/cli": "workspace:^",
     "@vslides/core": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^18.15.5",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.56.0",
-    "eslint": "^8.36.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "parcel": "^2.8.3",
-    "prettier": "^2.8.6",
-    "typescript": "^5.0.2",
-    "unbuild": "^1.1.2",
-    "vitest": "^0.29.7"
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.3",
+    "unbuild": "^1.2.0",
+    "vitest": "^0.29.8"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx,vue}": [

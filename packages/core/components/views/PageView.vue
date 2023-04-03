@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style['vslides-page-view']" @click="onClick">
+  <div :class="$style['vslides-page-view']" @touchend="onTouch">
     <PageContainer>
       <Page
         v-if="pageNo >= 1 && pageNo <= pages.length"
@@ -50,8 +50,9 @@ onKeyStroke('ArrowLeft', prevPage)
 onKeyStroke('ArrowRight', nextPage)
 
 const { width } = useWindowSize()
-function onClick(e: MouseEvent) {
-  const target = e?.target as HTMLElement | undefined
+function onTouch(e: TouchEvent) {
+  console.log(e)
+  const target = e.target as HTMLElement | undefined
   if (
     !target ||
     target.tagName === 'A' ||
@@ -60,9 +61,13 @@ function onClick(e: MouseEvent) {
   ) {
     return
   }
-  if (e.pageX / width.value < 0.25) {
+  if (e.changedTouches.length !== 1) {
+    return
+  }
+  const pageX = e.changedTouches[0].pageX
+  if (pageX / width.value < 0.3) {
     prevPage()
-  } else if (e.pageX / width.value > 0.75) {
+  } else if (pageX / width.value > 0.7) {
     nextPage()
   }
 }
