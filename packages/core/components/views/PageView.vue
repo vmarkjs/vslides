@@ -1,13 +1,10 @@
 <template>
-  <div :class="$style['vslides-page-view']" @touchend="onTouch">
-    <PageContainer>
-      <Page
-        v-if="pageNo >= 1 && pageNo <= pages.length"
-        :page="pages[pageNo - 1]"
-      />
-      <EndPage v-else />
-    </PageContainer>
-  </div>
+  <PageDisplay
+    :pages="pages"
+    :theme="theme"
+    :page-no="pageNo"
+    @touchend="onTouch"
+  />
 </template>
 
 <script setup lang="ts">
@@ -15,15 +12,14 @@ import { computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { onKeyStroke, useWindowSize } from '@vueuse/core'
 
-import PageContainer from '../page/PageContainer.vue'
-import Page from '../page/Page.vue'
-import EndPage from '../page/EndPage.vue'
+import PageDisplay from '../PageDisplay.vue'
 
-import { usePages } from '../..'
+import { usePages, useTheme } from '../..'
 
 const props = defineProps<{ page: string }>()
 const router = useRouter()
 const pages = usePages()
+const theme = useTheme()
 const pageNo = computed(() => parseInt(props.page || '1'))
 
 // normalize page
